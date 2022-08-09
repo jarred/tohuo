@@ -1,3 +1,4 @@
+import { uniq } from "lodash";
 import { Parser, Grammar } from "nearley";
 import Tohuto from "./tohuto";
 
@@ -6,5 +7,7 @@ const parser = new Parser(grammar);
 
 parser.feed("kaitiakitanga");
 
-console.log(`${parser.results.length} result/s`);
-console.log(JSON.stringify(parser.results, null, 2));
+const results = uniq(parser.results);
+
+console.log(`${results.length} result/s`);
+console.log(JSON.stringify(results, null, 2));
